@@ -1,21 +1,23 @@
 {
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 60
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "50mb" }
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "App.jsx",
+      "use": "@vercel/static"
     }
-  },
-  "routes": [
+  ],
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
-    },
-    {
-      "src": "/App.jsx",
-      "dest": "App.jsx"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "index.html"
+      "source": "/api/:path*",
+      "destination": "/api/index.py"
     }
   ]
 }
