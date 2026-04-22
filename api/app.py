@@ -1,28 +1,37 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+from dotenv import load_dotenv
 import base64
 import requests
 import fitz  # PyMuPDF
 import re
 import json
 import os
+import io
+from PIL import Image as PILImage
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions'
+
+# BASE_DIR is the 'api' folder. PROJECT_ROOT is the parent folder containing index.html and App.jsx
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
 
 
 # ── Serve frontend ────────────────────────────────────────────────────────────
 @app.route('/')
 def serve_index():
-    return send_from_directory(BASE_DIR, 'index.html')
+    return send_from_directory(PROJECT_ROOT, 'index.html')
 
 
 @app.route('/<path:filename>')
 def serve_static(filename):
-    return send_from_directory(BASE_DIR, filename)
+    return send_from_directory(PROJECT_ROOT, filename)
 
 
 def get_prompt(direction):
@@ -138,9 +147,6 @@ def extract_pdf_content(file_bytes: bytes) -> dict:
 
     # --- Fallback: render pages to image ---
     # Stitch all pages vertically into one JPEG for the vision model
-    import io
-    from PIL import Image as PILImage
-
     images = []
     for page in doc:
         pix = page.get_pixmap(dpi=200)
