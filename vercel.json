@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "api/app.py": {
-      "maxDuration": 60
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
