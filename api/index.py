@@ -280,7 +280,7 @@ def call_groq_vendor_only(is_text: bool, content_payload: str, direction: str, a
         }]
         extra_params = {"response_format": {"type": "json_object"}}
     else:
-        model_name = "llama-3.2-11b-vision-preview"
+        model_name = "meta-llama/llama-4-scout-17b-16e-instruct"
         messages = [{
             "role": "user",
             "content": [
@@ -369,7 +369,7 @@ def scan_invoice():
         extra_params = {"response_format": {"type": "json_object"}}
     else:
         # Vision model
-        model_name = "llama-3.2-11b-vision-preview"
+        model_name = "meta-llama/llama-4-scout-17b-16e-instruct"
         messages = [{
             "role": "user",
             "content": [
