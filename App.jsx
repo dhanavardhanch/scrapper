@@ -1282,7 +1282,7 @@ const TabPanel = ({ direction, savedEntries, onSave, onWarnDirection }) => {
                                     <label style={{ color: 'var(--text3)' }}>Google Sheet Webhook (Link to Sheet: https://docs.google.com/spreadsheets/d/1bCjWn9PBbYzEKhQR6QronAC1IkfeaaTMsHmGUmo5R-k/edit)</label>
                                     <input
                                         placeholder="https://script.google.com/..."
-                                        defaultValue={typeof localStorage !== 'undefined' ? localStorage.getItem('SHEETS_WEBHOOK_URL') || '' : ''}
+                                        defaultValue={typeof localStorage !== 'undefined' ? localStorage.getItem('SHEETS_WEBHOOK_URL') || 'https://script.google.com/macros/s/AKfycbyT6wuVGbkFB79tDyuYPzeYnRmhvC2jLlOjqeMxpl8jXyJ3aicwa9AuVyWCUdiTc8fu/exec' : ''}
                                         onChange={e => localStorage.setItem('SHEETS_WEBHOOK_URL', e.target.value.trim())}
                                         style={{ fontSize: '.73rem', fontFamily: 'var(--mono)' }}
                                     />
