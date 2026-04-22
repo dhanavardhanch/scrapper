@@ -280,7 +280,7 @@ def call_groq_vendor_only(is_text: bool, content_payload: str, direction: str, a
         }]
         extra_params = {"response_format": {"type": "json_object"}}
     else:
-        model_name = "meta-llama/llama-4-scout-17b-16e-instruct"
+        model_name = "llama-3.2-11b-vision-preview"
         messages = [{
             "role": "user",
             "content": [
@@ -322,6 +322,8 @@ def scan_invoice():
     if not api_key:
         api_key = os.environ.get('GROQ_API_KEY', '').strip()
     
+    api_key = api_key.strip()
+
     if not api_key:
         return jsonify({"error": "No API key provided in Authorization header or environment variable"}), 401
 
@@ -366,8 +368,8 @@ def scan_invoice():
         }]
         extra_params = {"response_format": {"type": "json_object"}}
     else:
-        # Vision model — does NOT support response_format json_object reliably
-        model_name = "meta-llama/llama-4-scout-17b-16e-instruct"
+        # Vision model
+        model_name = "llama-3.2-11b-vision-preview"
         messages = [{
             "role": "user",
             "content": [
