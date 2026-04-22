@@ -1279,7 +1279,7 @@ const TabPanel = ({ direction, savedEntries, onSave, onWarnDirection }) => {
                                     />
                                 </div>
                                 <div className="field">
-                                    <label style={{ color: 'var(--text3)' }}> https://script.google.com/macros/s/AKfycbzK2e3aPxVn4POdw3-zPGnqfYCodgOqzqrVdY3FEGZPctQ88otrK9E6BVLRgIis9SoMmg/exec</label>
+                                    <label style={{ color: 'var(--text3)' }}>Google Sheet Webhook (Link to Sheet: https://docs.google.com/spreadsheets/d/1bCjWn9PBbYzEKhQR6QronAC1IkfeaaTMsHmGUmo5R-k/edit)</label>
                                     <input
                                         placeholder="https://script.google.com/..."
                                         defaultValue={typeof localStorage !== 'undefined' ? localStorage.getItem('SHEETS_WEBHOOK_URL') || '' : ''}
