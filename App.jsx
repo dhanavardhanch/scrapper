@@ -1,3 +1,4 @@
+console.log("App.jsx started");
 const { useState, useEffect, useRef, useCallback } = React;
 
 // ─── MOCK SCAN DATA ───────────────────────────────────────────────────────────

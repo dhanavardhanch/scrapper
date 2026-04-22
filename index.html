@@ -27,6 +27,13 @@
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+      console.error('GLOBAL ERROR:', msg, 'at', url, 'line', lineNo);
+      alert('Error loading app: ' + msg);
+      return false;
+    };
+  </script>
   <script type="text/babel" src="App.jsx"></script>
 </body>
 
